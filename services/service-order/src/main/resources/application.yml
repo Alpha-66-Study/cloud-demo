@@ -12,7 +12,7 @@ spring:
       config:
         import-check:
           enabled: false
-        namespace: ${spring.profiles.active:dev}
+        namespace: ${spring.profiles.active:public}
 
 logging:
   level:

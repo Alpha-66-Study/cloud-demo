@@ -1,10 +1,5 @@
 package com.demo.order.service.impl;
 
-import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.List;
-
-
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.demo.order.bean.Order;
@@ -13,12 +8,14 @@ import com.demo.order.service.OrderService;
 import com.demo.product.bean.Product;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.math.BigDecimal;
+import java.util.List;
 
 @Slf4j
 @Service

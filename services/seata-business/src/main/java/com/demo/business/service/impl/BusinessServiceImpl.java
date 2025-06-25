@@ -5,7 +5,6 @@ import com.demo.business.feign.StorageFeignClient;
 import com.demo.business.service.BusinessService;
 import lombok.RequiredArgsConstructor;
 import org.apache.seata.spring.annotation.GlobalTransactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
