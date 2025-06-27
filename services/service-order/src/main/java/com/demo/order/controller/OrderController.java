@@ -6,11 +6,14 @@ import com.demo.order.properties.OrderProperties;
 import com.demo.order.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
+@RequestMapping("/order")
 @RequiredArgsConstructor
 public class OrderController {
 
@@ -19,21 +22,17 @@ public class OrderController {
 
   @GetMapping("/config")
   public String config() {
-    return "order.timeout=" + orderProperties.getTimeout() + "； " +
-        "order.auto-confirm=" + orderProperties.getAutoConfirm() + "；" +
-        "order.db-url=" + orderProperties.getDbUrl();
+    return "order.timeout=" + orderProperties.getTimeout() + "； " + "order.auto-confirm=" + orderProperties.getAutoConfirm() + "；" + "order.db-url=" + orderProperties.getDbUrl();
   }
 
   @GetMapping("/create")
-  public Order createOrder(@RequestParam("userId") Long userId,
-                           @RequestParam("productId") Long productId) {
+  public Order createOrder(@RequestParam("userId") Long userId, @RequestParam("productId") Long productId) {
     return orderService.createOrder(productId, userId);
   }
 
   @GetMapping("/spike")
   @SentinelResource(value = "spike-order", fallback = "spikeFallback")
-  public Order spike(@RequestParam(value = "userId", required = false) Long userId,
-                     @RequestParam(value = "productId", defaultValue = "1000") Long productId) {
+  public Order spike(@RequestParam(value = "userId", required = false) Long userId, @RequestParam(value = "productId", defaultValue = "1000") Long productId) {
     Order order = orderService.createOrder(productId, userId);
     order.setId(Long.MAX_VALUE);
     return order;
@@ -55,9 +54,15 @@ public class OrderController {
   }
 
   @GetMapping("/readDb")
+  @SentinelResource(value = "readDb")
   public String readDb() {
     log.info("readDb...");
     return "readDb success....";
+  }
+
+  public String readDbFallback(Throwable exception) {
+    log.info("readDbFallback...");
+    return "readDbFallback success...." + exception.getClass();
   }
 
 }

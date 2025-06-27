@@ -16,9 +16,6 @@ spring:
         dashboard: localhost:8858
       eager: true
       web-context-unify: false
-#            request-interceptors:
-#              - com.demo.order.interceptor.XTokenRequestInterceptor
-#            retryer: feign.retryer.Default
 
 feign:
   sentinel:

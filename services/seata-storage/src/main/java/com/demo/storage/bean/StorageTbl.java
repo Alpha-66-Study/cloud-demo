@@ -1,5 +1,6 @@
 package com.demo.storage.bean;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import lombok.Data;
@@ -15,5 +16,6 @@ public class StorageTbl implements Serializable {
 
   private Integer count;
 
+  @Serial
   private static final long serialVersionUID = 1L;
 }

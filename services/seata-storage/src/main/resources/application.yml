@@ -1,19 +1,48 @@
+server:
+  port: 13000
 spring:
+  profiles:
+    active: dev
   application:
     name: seata-storage
   datasource:
-    url: jdbc:mysql://localhost:3306/storage_db?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://localhost:3307/storage_db?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
     nacos:
       server-addr: 127.0.0.1:8848
+      discovery:
+        namespace: ${spring.profiles.active}
+        group: SEATA_GROUP
       config:
         import-check:
           enabled: false
-server:
-  port: 13000
+        namespace: ${spring.profiles.active}
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
+
+seata:
+  enabled: true
+  tx-service-group: default_tx_group
+  config:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      namespace: ${spring.profiles.active}
+      group: seata-server
+      username: nacos
+      password: nacos
+      data-id: seata-server.properties
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: 127.0.0.1:8848
+      namespace: ${spring.profiles.active}
+      group: SEATA_GROUP
+      cluster: default
+      username: nacos
+      password: nacos

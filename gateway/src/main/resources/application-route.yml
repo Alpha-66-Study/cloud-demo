@@ -35,15 +35,15 @@ spring:
                 patterns: /api/order/**
                 matchTrailingSlash: true
           filters:
-            - RewritePath=/api/order/?(?<segment>.*), /$\{segment}
-            - OnceToken=X-Response-Token, jwt
+            - RewritePath=/api/order(?<segment>/?.*), /order${segment}
+            - OnceToken=X-Response-Token, uuid
           order: 1
         - id: product-route
           uri: lb://service-product
           predicates:
             - Path=/api/product/**
           filters:
-            - RewritePath=/api/product/?(?<segment>.*), /$\{segment}
+            - RewritePath=/api/product(?<segment>/?.*), /product${segment}
           order: 2
       default-filters:
-        - AddResponseHeader=X-Response-Abc, 123
+        - AddResponseHeader=X-Response-Token, 123

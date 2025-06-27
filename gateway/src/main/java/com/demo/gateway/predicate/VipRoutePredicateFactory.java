@@ -22,16 +22,10 @@ public class VipRoutePredicateFactory extends AbstractRoutePredicateFactory<VipR
 
   @Override
   public Predicate<ServerWebExchange> apply(Config config) {
-    return new GatewayPredicate() {
-      @Override
-      public boolean test(ServerWebExchange serverWebExchange) {
-        // localhost/search?q=haha&user=leifengyang
-        ServerHttpRequest request = serverWebExchange.getRequest();
-
-        String first = request.getQueryParams().getFirst(config.param);
-
-        return StringUtils.hasText(first) && first.equals(config.value);
-      }
+    return (GatewayPredicate) serverWebExchange -> {
+      ServerHttpRequest request = serverWebExchange.getRequest();
+      String first = request.getQueryParams().getFirst(config.param);
+      return StringUtils.hasText(first) && first.equals(config.value);
     };
   }
 
@@ -48,8 +42,6 @@ public class VipRoutePredicateFactory extends AbstractRoutePredicateFactory<VipR
 
     @NotEmpty
     private String param;
-
-
     @NotEmpty
     private String value;
 

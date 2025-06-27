@@ -9,10 +9,12 @@ spring:
   cloud:
     nacos:
       server-addr: 127.0.0.1:8848
+      discovery:
+        namespace: ${spring.profiles.active}
       config:
         import-check:
           enabled: false
-        namespace: ${spring.profiles.active:public}
+        namespace: ${spring.profiles.active}
 
 logging:
   level:
