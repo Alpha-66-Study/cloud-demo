@@ -84,3 +84,4 @@ server.recovery.timeoutRetryPeriod=1000
 - [68-seata基础架构](doc/notes/68-seata基础架构.md)
 - [70-seata低层工作原理](doc/notes/70-seata低层工作原理.md)
 - [71-seata4种事务模式](doc/notes/71-seata4种事务模式.md)
+- [72-分布式锁redisson](doc/notes/72-分布式锁redisson.md)
