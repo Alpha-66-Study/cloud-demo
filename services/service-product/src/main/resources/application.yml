@@ -14,11 +14,6 @@ spring:
       discovery:
         namespace: dev
 
-    sentinel:
-      transport:
-        dashboard: localhost:8858
-      eager: true
-
   data:
     redis:
       host: 127.0.0.1

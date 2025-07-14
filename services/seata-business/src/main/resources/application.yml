@@ -11,9 +11,6 @@ spring:
       discovery:
         namespace: ${spring.profiles.active}
         group: SEATA_GROUP
-      config:
-        import-check:
-          enabled: false
 
 seata:
   enabled: true

@@ -29,3 +29,4 @@
 - [26-seata4种事务模式](doc/notes/26-seata4种事务模式.md)
 - [27-seata在nacos中的配置](doc/notes/27-seata在nacos中的配置.md)
 - [28-分布式锁redisson](doc/notes/28-分布式锁redisson.md)
+- [29-分布式任务调度平台xxl-job](doc/notes/29-分布式任务调度平台xxl-job.md)

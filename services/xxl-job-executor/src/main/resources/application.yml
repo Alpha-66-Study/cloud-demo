@@ -1,0 +1,20 @@
+server:
+  port: 14000
+
+spring:
+  application:
+    name: xxl-job-executor
+
+xxl:
+  job:
+    admin:
+      addresses: http://127.0.0.1:8080/xxl-job-admin
+      accessToken: default_token
+      timeout: 3
+    executor:
+      appname: xxl-job-executor
+      address: ""
+      ip: ""
+      port: 9999
+      logpath: "${user.home}/logs/xxl-job/"
+      logretentiondays: 30

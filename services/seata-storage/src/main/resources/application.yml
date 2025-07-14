@@ -16,10 +16,6 @@ spring:
       discovery:
         namespace: ${spring.profiles.active}
         group: SEATA_GROUP
-      config:
-        import-check:
-          enabled: false
-        namespace: ${spring.profiles.active}
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
