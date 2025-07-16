@@ -11,6 +11,7 @@ import org.springframework.web.server.ServerWebExchange;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Predicate;
 
 @Component
@@ -25,7 +26,7 @@ public class VipRoutePredicateFactory extends AbstractRoutePredicateFactory<VipR
     return (GatewayPredicate) serverWebExchange -> {
       ServerHttpRequest request = serverWebExchange.getRequest();
       String first = request.getQueryParams().getFirst(config.param);
-      return StringUtils.hasText(first) && first.equals(config.value);
+      return StringUtils.hasText(first) && Objects.equals(first, config.value);
     };
   }
 

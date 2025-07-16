@@ -51,17 +51,20 @@ public class OrderServiceImpl implements OrderService {
     return order;
   }
 
+  @SuppressWarnings("unused")
   private Product getProductFromRemoteWithLoadBalanceAnnotation(Long productId) {
     String url = "http://service-product/product/" + productId;
     return restTemplate.getForObject(url, Product.class);
   }
 
+  @SuppressWarnings("unused")
   private Product getProductFromRemoteWithLoadBalance(Long productId) {
     ServiceInstance choose = loadBalancerClient.choose("service-product");
     String url = "http://" + choose.getHost() + ":" + choose.getPort() + "/product/" + productId;
     return restTemplate.getForObject(url, Product.class);
   }
 
+  @SuppressWarnings("unused")
   private Product getProductFromRemote(Long productId) {
     List<ServiceInstance> instances = discoveryClient.getInstances("service-product");
     ServiceInstance instance = instances.get(0);
