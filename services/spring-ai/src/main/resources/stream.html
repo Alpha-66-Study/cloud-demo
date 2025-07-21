@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>流式响应测试</title>
+  <style>
+      body { font-family: sans-serif; padding: 20px; }
+      input, button { font-size: 16px; margin-right: 10px; padding: 6px 10px; }
+      #output { margin-top: 16px; padding: 10px; border: 1px solid #ccc; white-space: pre-wrap; min-height: 80px; }
+  </style>
+</head>
+<body>
+
+<input id="message" type="text" value="给我讲一个笑话" placeholder="输入内容">
+<button onclick="start()">发送</button>
+
+<div id="output"></div>
+
+<script>
+  function start() {
+    const message = encodeURIComponent(document.getElementById('message').value.trim());
+    const output = document.getElementById('output');
+    output.textContent = '';
+
+    const source = new EventSource(`http://127.0.0.1:15000/generateStream?message=${message}`);
+
+    source.onmessage = e => output.textContent += e.data;
+    source.onerror = () => {
+      output.textContent += '\n[连接关闭]';
+      source.close();
+    };
+  }
+</script>
+
+</body>
+</html>

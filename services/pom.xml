@@ -17,6 +17,7 @@
         <module>seata-order</module>
         <module>seata-storage</module>
         <module>xxl-job-executor</module>
+        <module>spring-ai</module>
     </modules>
     <artifactId>services</artifactId>
     <properties>
