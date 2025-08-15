@@ -18,6 +18,7 @@
         <module>seata-storage</module>
         <module>xxl-job-executor</module>
         <module>spring-ai</module>
+        <module>bitcoinj</module>
     </modules>
     <artifactId>services</artifactId>
     <properties>
@@ -56,7 +57,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <scope>annotationProcessor</scope>
         </dependency>
     </dependencies>
 

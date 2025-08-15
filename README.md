@@ -31,3 +31,4 @@
 - [28-分布式锁redisson](doc/notes/28-分布式锁redisson.md)
 - [29-分布式任务调度平台xxl-job](doc/notes/29-分布式任务调度平台xxl-job.md)
 - [30-spring-ai](doc/notes/30-spring-ai.md)
+- [31-比特币轻节点bitcoinj](doc/notes/31-比特币轻节点bitcoinj.md)]

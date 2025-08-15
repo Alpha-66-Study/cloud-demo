@@ -1,0 +1,10 @@
+server:
+  port: 16000
+
+spring:
+  application:
+    name: bitcoinj
+
+logging:
+  level:
+    org.bitcoinj: WARN
