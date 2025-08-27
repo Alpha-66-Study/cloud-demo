@@ -19,6 +19,7 @@
         <module>xxl-job-executor</module>
         <module>spring-ai</module>
         <module>bitcoinj</module>
+        <module>rabbitmq</module>
     </modules>
     <artifactId>services</artifactId>
     <properties>
