@@ -33,3 +33,4 @@
 - [30-spring-ai](doc/notes/30-spring-ai.md)
 - [31-比特币轻节点bitcoinj](doc/notes/31-比特币轻节点bitcoinj.md)
 - [32-rabbitmq](doc/notes/32-rabbitmq.md)
+- [33-JDK 9-21 新特性演示类](model/src/test/java/JdkNewFeaturesDemo.java)
